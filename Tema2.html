@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armstrong Numbers Finder</title>
+</head>
+<body>
+    <h1>Armstrong Numbers Finder</h1>
+    <p>Enter a starting and ending number to find Armstrong numbers within the interval:</p>
+    <form id="intervalForm">
+        <label for="start">Starting Number:</label>
+        <input type="number" id="start" name="start" required><br><br>
+        <label for="end">Ending Number:</label>
+        <input type="number" id="end" name="end" required><br><br>
+        <button type="submit">Find Armstrong Numbers</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        function isArmstrong(num) {
+            const digits = num.toString().split('');
+            const numDigits = digits.length;
+            
+            let sum = 0;
+            digits.forEach(digit => {
+                sum += Math.pow(parseInt(digit), numDigits);
+            });
+            
+            return sum === num;
+        }
+
+        function displayArmstrongNumbers(start, end) {
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = `<p>Armstrong numbers between ${start} and ${end}:</p>`;
+            for (let i = start; i <= end; i++) {
+                if (isArmstrong(i)) {
+                    resultDiv.innerHTML += `${i}<br>`;
+                }
+            }
+        }
+
+        document.getElementById("intervalForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const start = parseInt(document.getElementById("start").value);
+            const end = parseInt(document.getElementById("end").value);
+
+            if (isNaN(start) || isNaN(end) || start >= end) {
+                alert("Invalid input. Please enter valid starting and ending numbers.");
+            } else {
+                displayArmstrongNumbers(start, end);
+            }
+        });
+    </script>
+</body>
+</html>

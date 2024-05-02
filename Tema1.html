@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf=8">
+<Title>Javascript inmultire si impartire</Title>
+<body>
+<form>
+primul numar: <input type="text" id="1numar" /><br>
+al 2-lea numar: <input type="text" id="2numar" /> <br>
+<input type="button" onClick="inmultire()" Value="Inmultire" />
+<input type="button" onClick="impartire()" Value="Impartire" />
+</form>
+<p>Resultatul este : <br>
+<span id="rezultat"></span>
+</p>
+</body>
+<script type="text/javascript">
+function inmultire()
+{
+let num1 = document.getElementById("1numar").value;
+let num2 = document.getElementById("2numar").value;
+document.getElementbyId("rezultat").innerHTML = num1 * num2;
+}
+function impartire()
+{
+let num1 = document.getElementById("1numar").value;
+let num2 = document.getElementById("2numar").value;
+document.getElementbyId("rezultat").innerHTML = num1 / num2;
+}
+</script>
+</html>
+
